@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <Flex>
         <Box p='2'>
-            <Heading size='md'>Chakra App</Heading>
+            <Heading size='md'>Hiking App</Heading>
         </Box>
         <Spacer />
         <Box>

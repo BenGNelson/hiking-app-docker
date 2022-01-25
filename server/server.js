@@ -4,20 +4,22 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const morgan = require("morgan");
 const db = require("./db");
+const cors = require('cors')
 
 dotenv.config({
   path: "./config/config.env",
 });
 
 
-const hikes = require("./routes/hikes");
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+const hikes = require("./routes/hikes");
 app.use("/api/v1/hikes", hikes);
 
 if (process.env.NODE_ENV === "production") {

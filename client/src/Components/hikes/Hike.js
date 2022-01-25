@@ -1,17 +1,10 @@
 import React from 'react';
-import { VStack, Text, FormLabel, Center, HStack, Box, Heading } from '@chakra-ui/react';
+import { Text, HStack, Box, Heading } from '@chakra-ui/react';
 
 const Hike = (props) => {
   const hike = props.hike;
 
   return (
-      // <VStack mt={8} mb={4}>
-      //   <FormLabel fontSize='md'>{hike.hikeName}</FormLabel>
-      //   <Center>
-      //     <Text fontSize='sm'>Length (miles): {hike.hikeLength}</Text>
-      //     <Text fontSize='sm'>Rating: {hike.hikeRating}</Text>
-      //   </Center>
-      // </VStack>
     <HStack spacing={8} mt={8}>
       <Feature
         hikeName={hike.hikeName}

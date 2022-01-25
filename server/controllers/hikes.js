@@ -5,7 +5,7 @@ const Hike = require("../models/Hike");
 // @access  Public
 exports.getHikes = async (req, res, next) => {
   try {
-    const hikes = await Hike.find();
+    const hikes = await Hike.find().sort({createdAt: -1});
 
     return res.status(200).json({
       success: true,
@@ -25,7 +25,9 @@ exports.getHikes = async (req, res, next) => {
 // @access  Public
 exports.addHike = async (req, res, next) => {
   try {
-    const { hikeName, hikeLength, hikeRank } = req.body;
+    const { hikeName, hikeLength, hikeRating } = req.body;
+    console.log(req.body);
+
 
     if (!hikeName) {
       return res.status(400).json({
@@ -37,14 +39,14 @@ exports.addHike = async (req, res, next) => {
     if (hikeLength < 0) {
       return res.status(400).json({
         success: false,
-        error: "Lenght must be greater than 0",
+        error: "Length must be greater than 0",
       });
     }
 
-    if (hikeRank < 0 || hikeRank > 10) {
+    if (hikeRating < 0 || hikeRating > 5) {
       return res.status(400).json({
         success: false,
-        error: "Rank must be between 1 and 10",
+        error: "Rank must be between 1 and 5",
       });
     }
 
@@ -65,7 +67,7 @@ exports.addHike = async (req, res, next) => {
     } else {
       return res.status(500).json({
         success: false,
-        error: "Server Error",
+        error: `Server Error: ${err}`,
       });
     }
   }
@@ -85,7 +87,26 @@ exports.deleteHike = async (req, res, next) => {
       });
     }
 
-    await hike.remove();
+    await BlockModel.deleteMany({})
+
+    return res.status(200).json({
+      success: true,
+      data: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: "Server Error",
+    });
+  }
+};
+
+// @desc    Delete all hike
+// @route   DELETE /api/v1/hikes
+// @access  Public
+exports.deleteAllHikes = async (req, res, next) => {
+  try {
+    await Hike.deleteMany({});
 
     return res.status(200).json({
       success: true,

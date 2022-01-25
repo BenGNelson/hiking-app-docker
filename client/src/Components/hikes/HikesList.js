@@ -7,7 +7,7 @@ const HikesList = (props) => {
   const hikes = props.hikes;
   return (
     <Box>
-      {hikes.map((hike) => (
+      {hikes.map((hike, index) => (
         <Hike key={hike._id} hike={hike} />
       ))}
     </Box>

@@ -10,7 +10,7 @@ const HikeSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please add a length"],
   },
-  hikeRank: {
+  hikeRating: {
     type: Number,
     required: [true, "Please add a rating"],
   },
