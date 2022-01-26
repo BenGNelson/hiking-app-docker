@@ -26,9 +26,8 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
 
   server:
-    build:
-      dockerfile: Dockerfile
-      context: "./server"
+    image:
+      bengnelson/hiking-server
     ports:
       - 5000:5000
     links:
@@ -40,10 +39,9 @@ services:
       - ./server:/app
 
   client:
+    image:
+      bengnelson/hiking-client
     stdin_open: true
-    build:
-      dockerfile: Dockerfile
-      context: ./client
     ports:
       - 3000:3000
     volumes:
