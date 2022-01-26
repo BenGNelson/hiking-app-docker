@@ -8,7 +8,8 @@ NODE_ENV=production
 MONGO_ADMIN=the_admin_username
 MONGO_PASSWORD=the_password
 MONGO_PORT=the_port
-DB=the_db
+DB=the_db_to_use
+INIT_DB=the_init_db
 ```
 
 ```
