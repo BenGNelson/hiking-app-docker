@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-change config.env file in config folder
+Update /server/config/config.env file in config folder
 NODE_ENV=production
 MONGO_ADMIN=the_admin_username
 MONGO_PASSWORD=the_password
